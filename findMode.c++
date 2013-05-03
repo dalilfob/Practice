@@ -28,6 +28,7 @@ int main()
 	return 0;
 }
 
+// This one gets heap corruption error. Not sure why
 int findMode(int *a, int size)
 {
 	int *b = new int[20];
@@ -51,6 +52,31 @@ int findMode(int *a, int size)
 	delete[] b;
 	b = NULL;
 
+	return index;
+}
+
+// working method. Better space complexity, worse time complexity than above method. 
+int findMode(int *a, int size)
+{
+	int max = 0;
+	int counter = 0;
+	int index = 0;
+	for (int i = 0; i < size; ++i) 
+	{
+		for (int j = 0; j < size; j++)
+		{
+			if (*(a+j) == i) {
+				counter++;
+			}
+		}
+		if (counter > max) {
+			max = counter;
+			counter = 0;
+			index = i;
+		} else {
+			counter = 0;
+		}
+	}
 	return index;
 }
 
