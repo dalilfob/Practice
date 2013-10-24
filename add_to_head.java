@@ -6,11 +6,8 @@ public void add_to_head(int key, double value) {
 				current.next.key += 1;
 				current = current.next;
 			}
-			System.out.println(head.next.key + " " + head.next.value);
-			newHead.next = head.next.next;
+			newHead.next = head.next;
 			head.next = newHead;
-			System.out.println(head.next.key + " " + head.next.value);
-			System.out.println(head.next.next.key + " " + head.next.next.value);
 		} else {
 			head.next = newHead;
 		}
